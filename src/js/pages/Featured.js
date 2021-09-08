@@ -10,21 +10,28 @@ import Footer from "../components/Footer";*/
 export default class Featured extends React.Component {
     constructor(){
         super();
+        this.getTodos = this.getTodos.bind(this);
         this.state={
             todos: todoStore.getAll(),
         }
     }
     componentWillMount(){
-        todoStore.on("change", () =>
-        {
-            this.setState({
-                todos: todoStore.getAll(),
-            });
+        todoStore.on("change", this.getTodos);
+        console.log("msg");
+    }
+
+    componentWillUnmount(){
+        todoStore.removeListener("change", this.getTodos);
+    }
+
+    getTodos(){
+        this.setState({
+            todos: todoStore.getAll(),
         });
     }
 
-    createTodo(){
-        TodoActions.createTodo(Date.now());
+    reloadTodos(){
+        TodoActions.reloadTodos(Date.now());
     }
 
     render() {
@@ -35,7 +42,7 @@ export default class Featured extends React.Component {
 
         return (
             <div>
-                <button onClick={this.createTodo.bind(this)}>Create</button>
+                <button onClick={this.reloadTodos.bind(this)}>Reload</button>
                 <div class="row">
                     <h1>Todos</h1>
                     {TodoComponents}
