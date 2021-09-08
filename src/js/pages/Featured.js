@@ -1,5 +1,6 @@
 import React from "react";
 import todoStore from "../stores/TodoStore";
+import * as TodoActions from "../actions/TodoAction";
 import Todo from "../components/Article";
 
 /*import Header from "../components/Header";
@@ -21,6 +22,11 @@ export default class Featured extends React.Component {
             });
         });
     }
+
+    createTodo(){
+        TodoActions.createTodo(Date.now());
+    }
+
     render() {
         const {todos} = this.state;
         const TodoComponents = todos.map((todo) =>
@@ -29,6 +35,7 @@ export default class Featured extends React.Component {
 
         return (
             <div>
+                <button onClick={this.createTodo.bind(this)}>Create</button>
                 <div class="row">
                     <h1>Todos</h1>
                     {TodoComponents}
