@@ -1,21 +1,37 @@
 import React from "react";
-import Article from "../components/Article";
+import todoStore from "../stores/TodoStore";
+import Todo from "../components/Article";
 
 /*import Header from "../components/Header";
 import Footer from "../components/Footer";*/
 
+
 export default class Featured extends React.Component {
+    constructor(){
+        super();
+        this.state={
+            todos: todoStore.getAll(),
+        }
+    }
+    componentWillMount(){
+        todoStore.on("change", () =>
+        {
+            this.setState({
+                todos: todoStore.getAll(),
+            });
+        });
+    }
     render() {
-        const Articles = [
-            "Article 1",
-            "Article 2",
-            "Article 3"
-        ].map((title, i) => <Article key={i} title={title}></Article>);
+        const {todos} = this.state;
+        const TodoComponents = todos.map((todo) =>
+        {return <Todo key={todo.id} {...todo}/>;
+    });
 
         return (
             <div>
                 <div class="row">
-                    {Articles}
+                    <h1>Todos</h1>
+                    {TodoComponents}
                 </div>
             </div>
         );
