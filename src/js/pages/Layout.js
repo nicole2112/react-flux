@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from "react-router";
+import Nav from "../components/layout/Nav";
+import Footer from "../components/layout/Footer";
 
 export default class Layout extends React.Component {
     /*constructor(){
@@ -18,17 +20,28 @@ export default class Layout extends React.Component {
     }
 
     render() {
+        const {location} = this.props;
+        const containerStyle = {
+            marginTop: "60px"
+        };
+
+
         return (
            /* <div>
                 <Header changeTitle = {this.changeTitle.bind(this)} title={this.state.title}/>
                 <Footer />
             </div>*/
             <div>
-                <h1>KillerNews.net</h1>
-                {this.props.children}
-                <Link to="archives" class ="btn btn-danger">archives</Link>
-                <Link to="settings"><button class ="btn btn-success">settings</button></Link>
-                <button onClick={this.navigate.bind(this)}>featured</button>
+                <Nav location={location}></Nav>
+                <div class="container" style={containerStyle}>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>KillerNews.net</h1>
+                            {this.props.children}
+                        </div>
+                    </div>
+                    <Footer></Footer>
+                </div>
             </div>    
         );
     }
