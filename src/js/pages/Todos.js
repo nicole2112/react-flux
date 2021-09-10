@@ -1,7 +1,7 @@
 import React from "react";
 import todoStore from "../stores/TodoStore";
 import * as TodoActions from "../actions/TodoAction";
-import Todo from "../components/Article";
+import Todo from "../components/Todo";
 
 /*import Header from "../components/Header";
 import Footer from "../components/Footer";*/
@@ -15,11 +15,14 @@ export default class Featured extends React.Component {
             todos: todoStore.getAll(),
         }
     }
+
+    //Se utiliza sólo la primera vez que se renderiza el componente
     componentWillMount(){
         todoStore.on("change", this.getTodos);
-        console.log("msg");
+        console.log("count ", todoStore.listenerCount("change"));
     }
 
+    //Para prevenir memory leaks
     componentWillUnmount(){
         todoStore.removeListener("change", this.getTodos);
     }
@@ -37,8 +40,9 @@ export default class Featured extends React.Component {
     render() {
         const {todos} = this.state;
         const TodoComponents = todos.map((todo) =>
-        {return <Todo key={todo.id} {...todo}/>;
-    });
+        {
+            return <Todo key={todo.id} {...todo}/>;
+        });
 
         return (
             <div>

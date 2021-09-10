@@ -10,7 +10,7 @@ export default class Archives extends React.Component {
         const {date, filter} = query;
         
         return (
-            <h1>Archives {article}</h1>
+            <h2>Create New ToDo {article}</h2>
         );
     }
 }

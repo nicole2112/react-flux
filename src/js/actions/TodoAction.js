@@ -16,6 +16,7 @@ export function deleteTodo(id){
 
 export function reloadTodos() {
     dispatcher.dispatch({type: "FETCH_TODOS"});
+    
     setTimeout(() => {
       dispatcher.dispatch({type: "RECEIVE_TODOS", todos: [
         {
@@ -25,7 +26,7 @@ export function reloadTodos() {
         },
         {
           id: 6262627272,
-          text: "Hug Wife",
+          text: "Finish class project",
           complete: true
         },
       ]});
