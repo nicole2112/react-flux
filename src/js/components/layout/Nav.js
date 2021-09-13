@@ -39,7 +39,7 @@ export default class Nav extends React.Component {
                 <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Todos</IndexLink>
               </li>
               <li class={archivesClass}>
-                <Link to="archives" onClick={this.toggleCollapse.bind(this)}>Favorites</Link>
+                <Link to="archives" onClick={this.toggleCollapse.bind(this)}>Create</Link>
               </li>
               <li class={settingsClass}>
                 <Link to="settings" onClick={this.toggleCollapse.bind(this)}>Settings</Link>

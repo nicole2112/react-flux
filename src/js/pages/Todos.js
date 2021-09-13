@@ -19,7 +19,7 @@ export default class Featured extends React.Component {
     //Se utiliza sólo la primera vez que se renderiza el componente
     componentWillMount(){
         todoStore.on("change", this.getTodos);
-        console.log("count ", todoStore.listenerCount("change"));
+        // console.log("count ", todoStore.listenerCount("change"));
     }
 
     //Para prevenir memory leaks
@@ -28,6 +28,7 @@ export default class Featured extends React.Component {
     }
 
     getTodos(){
+        console.log("change");
         this.setState({
             todos: todoStore.getAll(),
         });
