@@ -47,7 +47,7 @@ export default class Featured extends React.Component {
 
         return (
             <div>
-                <button onClick={this.reloadTodos.bind(this)}>Reload</button>
+                <button onClick={this.reloadTodos.bind(this)} className="btn btn-primary">Reload</button>
                 <div class="row">
                     <h1>Todos</h1>
                     {TodoComponents}

@@ -34,7 +34,7 @@ class TodoStore extends EventEmitter{
 
   receiveTodo(_todos) {
       console.log(this.todos);
-      //this.todos = _todos;
+      this.todos.push.apply(this.todos, _todos);
       this.emit("change");
   }
 

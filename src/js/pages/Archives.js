@@ -16,6 +16,7 @@ export default class Archives extends React.Component {
         const {todoText} = "";
 
         const onTextChange = (event) => {
+            event.preventDefault();
             this.todoText = event.target.value;
         }
         return (
