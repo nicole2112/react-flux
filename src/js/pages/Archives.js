@@ -2,7 +2,8 @@ import React from "react";
 import * as TodoActions from "../actions/TodoAction";
 
 export default class Archives extends React.Component {
-    createTodo(){
+    createTodo(e){
+        e.preventDefault();
         TodoActions.createTodo(this.todoText);
     }
     render() {
